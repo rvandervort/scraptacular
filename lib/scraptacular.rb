@@ -12,12 +12,16 @@ module Scraptacular
       world.scrapers[scraper_identifier]
     end
 
-    def world
-      @world ||= Scraptacular::World.new
+    def agent
+      @agent ||= Mechanize.new
     end
 
     def define_scraper(identifier, &block)
       Scraptacular.world.scrapers[identifier.to_sym] = Scraptacular::Scraper.new(identifier, &block)
+    end
+
+    def world
+      @world ||= Scraptacular::World.new
     end
   end
 end

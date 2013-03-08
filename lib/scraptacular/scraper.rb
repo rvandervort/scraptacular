@@ -36,10 +36,9 @@ module Scraptacular
       end
 
       retval = []
-      agent = Mechanize.new
 
       page.search(selector).each do |link|
-        subpage = agent.get(link.attributes["href"].value)
+        subpage = Scraptacular.agent.get(link.attributes["href"].value)
         retval += [*scraper.run(subpage)]
       end
 

@@ -22,7 +22,6 @@ module Scraptacular
     def run(out)
       out.puts "  Suite: #{self.name}"
 
-      agent = Mechanize.new
       results = []
 
       urls.each do |url|
@@ -31,7 +30,7 @@ module Scraptacular
         scraper = url.scraper
         scraper ||= default_scraper
 
-        page = agent.get(url.path)
+        page = Scraptacular.agent.get(url.path)
         results += [*scraper.run(page)]
       end
 
