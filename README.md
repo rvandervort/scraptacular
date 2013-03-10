@@ -17,33 +17,28 @@ Or install it yourself as:
 
 ## Usage
 
-
-
-
 ### Defining Scrapers
+The scraper describes what content should be plucked from the page and returned in the result.
 
-A scraper is the definition of what-to-do when a page is scraped :
-
+*Example 1 : Basic Usage*
 ```ruby
- scraper :scraper_identifier &block
-
- # Example 1 : Basic Usage
  scraper :yahoo_front_page do
-   # The block passed to `result` will be
    result do
      highest_trending_url { page.search("ol.trending_now_trend_list li a").first.attributes["href"].value }
      anything { "My returned value" }
    end
  end
+```
 
- # Example 2 : Multiple Level Scraping
+*Example 2 : Multiple Level Scraping*
+```ruby
  scraper :event_index_page do
    # Find URLs, scrape the contents of those pages using the :event_detail_page scraper
    scrape_links("a.css_selector_for_links", with: :event_detail_page).each do |link|
      result do
 
        # Provide partial result from the index page
-       event_title { page.search("h4").text }
+       event_title { page.search("h4").first.text }
 
        # Merge results from the detail page
        merge(link)
@@ -57,12 +52,9 @@ A scraper is the definition of what-to-do when a page is scraped :
       price { ... }
    end
  end
-
 ```
 Scraping a page returns a Scraptacular::Result object :
-
 ```ruby
-
 result = results.first  # See section below on running a scraping session
 
 result.class  # Scraptacular::Result
