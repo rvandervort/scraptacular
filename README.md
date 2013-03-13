@@ -1,5 +1,7 @@
 # Scraptacular
 
+[![Code Climate](https://codeclimate.com/github/rvandervort/scraptacular.png)](https://codeclimate.com/github/rvandervort/scraptacular)
+
 Organized web-scraping. 
 ## Installation
 
