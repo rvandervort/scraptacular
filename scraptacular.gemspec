@@ -18,5 +18,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_runtime_dependency 'mechanize', '~> 2.5'
+  gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'simplecov', '~> 0.7.1'
 end

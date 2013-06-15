@@ -92,7 +92,7 @@ $ scraptacular -d /path/to/scraper_definitions.rb -s /path/to/sessions.rb -o /pa
 ```ruby
 require 'scraptacular'
 
-# Set up the definitions an sessions
+# Set up the definitions and sessions
 scraper :my_scraper do
 end
 
@@ -104,10 +104,10 @@ scrape_group "My Group" do
 end
 
 # Run all groups
-results = Scraptacular.world.run
+results = Scraptacular.run
 
 # Run a single group
-results = Scraptacular.world.run({group: "My Group"})
+results = Scraptacular.run({group: "My Group"})
 
 ```
 

@@ -23,6 +23,10 @@ module Scraptacular
     def world
       @world ||= Scraptacular::World.new
     end
+
+    def run(options, out = $stdout)
+      world.run(options, out)
+    end
   end
 end
 
